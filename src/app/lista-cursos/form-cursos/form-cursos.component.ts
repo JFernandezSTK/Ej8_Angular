@@ -15,10 +15,14 @@ export class FormCursosComponent {
   nivel:string
 
   constructor(private curso:CrudCursoService, private ruta:ActivatedRoute){
-    this.id=ruta.snapshot.params["id"]
+    this.id=ruta.snapshot.params['id']
     this.nombre=curso.nombre
     this.duracion=curso.duracion
     this.nivel="Principiante"
+  }
+
+  ngOnInit(){
+    this.ruta.params.subscribe(id => this.id=id["id"])
   }
 
   anadir(){
